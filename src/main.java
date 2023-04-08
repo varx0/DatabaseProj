@@ -1,11 +1,7 @@
 import com.sun.tools.javac.Main;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.Writer;
-import java.io.BufferedWriter;
+import java.io.*;
 import java.util.*;
 
 public class main {
@@ -97,7 +93,7 @@ public class main {
 
     }
 
-    public static void searchMenu(){
+    public static void searchMenu() {
         String searches = ("Search menu\n"
         + "A. Search Name\n"
         + "B. Search groups\n"
@@ -106,8 +102,17 @@ public class main {
         if(res.equals("A") || res.equals("a")) {
             SearchClass.searchName(users2);
         } else if (res.equals("B") || res.equals("b")) {
-            SearchClass.searchGroups(users2);
-        } else if (res.equals("C") || res.equals"c") {
+            String builder = null;
+            ArrayList<String> hope =  SearchClass.searchGroups(users2);
+            for(int i = 0; i < hope.size(); i++){
+                builder = builder+"\n" + hope.get(i) + "\n";
+            }
+            if(builder != null) {
+                JOptionPane.showInputDialog("Users with this group: " + builder);
+            }else{
+                JOptionPane.showInputDialog("There are no users in this group.");
+            }
+        } else if (res.equals("C") || res.equals("c")) {
             SearchClass.searchUID(users2);
         }
     }
@@ -116,8 +121,8 @@ public class main {
                 "A. Manipulate Users \n"
                 + "B. Display Menu \n"
                 + "C. Edit Users \n"
-                + "D. Exit Main Menu\n"
-                + "E. Search Menu\n");
+                + "D. Search\n"
+                + "E. Exit\n");
         String choice = JOptionPane.showInputDialog(MainMenu);
         if(choice.equals("A") || choice.equals("a")){
             System.out.println("Add user");

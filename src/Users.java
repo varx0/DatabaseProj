@@ -44,5 +44,8 @@ public class Users {
     public void removeallgroups(){
         groups = "";
     }
-
+    public String getAll(){
+        String builder = username+","+password+","+UID+","+groups;
+        return builder;
+    }
 }

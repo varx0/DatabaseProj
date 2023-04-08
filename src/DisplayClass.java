@@ -226,7 +226,7 @@ public class DisplayClass {
     public static void all(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++){
-            builder = builder +users.get(i).getUsername() + ",";
+            builder = builder + users.get(i).getUsername() + ",";
             builder = builder + users.get(i).getPassword() + ",";
             builder = builder + users.get(i).getUID() + ",";
             builder = builder + users.get(i).getgroups() + "\n";
