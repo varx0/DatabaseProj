@@ -6,6 +6,16 @@ import java.util.*;
 
 public class main {
     static ArrayList<Users> users2 = new ArrayList<Users>();
+
+    public static void sortMenu(){
+        String input = JOptionPane.showInputDialog("Sort Menu\n\n"
+        + "A. Sort by Username\n"
+        + "B. Sort by UID\n"
+        + "C. Sort by Group\n");
+        if(input.equals("A") || input.equals("a")){
+            SortClass.sortUsername(users2);
+        }
+    }
     public static void readList() throws Exception {
 
 
@@ -18,7 +28,7 @@ public class main {
                 break;
             }
             else{
-                StringBuilder total = new StringBuilder();
+                //StringBuilder total = new StringBuilder();
                 String split[] = line.split(",");
                 String name = split[0];
                 String password = split[1];
@@ -122,7 +132,8 @@ public class main {
                 + "B. Display Menu \n"
                 + "C. Edit Users \n"
                 + "D. Search\n"
-                + "E. Exit\n");
+                + "E. Sort\n"
+                + "F. Exit\n");
         String choice = JOptionPane.showInputDialog(MainMenu);
         if(choice.equals("A") || choice.equals("a")){
             System.out.println("Add user");
@@ -139,6 +150,9 @@ public class main {
             System.out.println("Search");
             searchMenu();
         } else if (choice.equals("E") || choice.equals("e")) {
+            System.out.println("Sort");
+            sortMenu();
+        } else if (choice.equals("F") || choice.equals("f")) {
             System.out.println("Exit");
             System.exit(0);
 
