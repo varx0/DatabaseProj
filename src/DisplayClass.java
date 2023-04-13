@@ -15,6 +15,8 @@ public class DisplayClass {
         try {
             File inputFile = new File("list.txt");
             File tempFile = new File("temp.txt");
+            File backup = new File ("List.bak");
+
             tempFile.createNewFile();
 
             BufferedReader reads = new BufferedReader(new FileReader(inputFile));
@@ -34,6 +36,7 @@ public class DisplayClass {
             }
             writes.close();
             reads.close();
+            inputFile.renameTo(backup);
             tempFile.renameTo(inputFile);
         }
         catch (Exception IOException){
@@ -52,6 +55,8 @@ public class DisplayClass {
         try {
             File inputFile = new File("list.txt");
             File tempFile = new File("temp.txt");
+            File backup = new File ("List.bak");
+
             tempFile.createNewFile();
 
             BufferedReader reads = new BufferedReader(new FileReader(inputFile));
@@ -71,6 +76,7 @@ public class DisplayClass {
             }
             writes.close();
             reads.close();
+            inputFile.renameTo(backup);
             tempFile.renameTo(inputFile);
         }
         catch (Exception IOException){
@@ -89,6 +95,8 @@ public class DisplayClass {
         try {
             File inputFile = new File("list.txt");
             File tempFile = new File("temp.txt");
+            File backup = new File ("List.bak");
+
             tempFile.createNewFile();
 
             BufferedReader reads = new BufferedReader(new FileReader(inputFile));
@@ -108,6 +116,7 @@ public class DisplayClass {
             }
             writes.close();
             reads.close();
+            inputFile.renameTo(backup);
             tempFile.renameTo(inputFile);
         }
         catch (Exception IOException){
@@ -126,6 +135,7 @@ public class DisplayClass {
         try {
             File inputFile = new File("list.txt");
             File tempFile = new File("temp.txt");
+            File backup = new File ("List.bak");
             tempFile.createNewFile();
 
             BufferedReader reads = new BufferedReader(new FileReader(inputFile));
@@ -145,7 +155,9 @@ public class DisplayClass {
             }
             writes.close();
             reads.close();
+            inputFile.renameTo(backup);
             tempFile.renameTo(inputFile);
+
         }
         catch (Exception IOException){
             System.out.println("Error");

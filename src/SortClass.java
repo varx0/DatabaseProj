@@ -1,9 +1,18 @@
 import javax.swing.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class SortClass {
-    public static void sortUsername(ArrayList<Users> users){
+    public static void sortUsername(ArrayList<Users> users)throws IOException {
+        File writes = new File("temp.txt");
+        File input = new File("list.txt");
+        File backup = new File("list.bak");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(writes));
+
         ArrayList<String> names = new ArrayList<>();
         String Builder = "";
         for(int i = 0; i<users.size(); i++){
@@ -11,16 +20,16 @@ public class SortClass {
         }
         Collections.sort(names);
         for(int i = 0; i<names.size(); i++){
-            Builder = Builder + names.get(i);
-            Builder = Builder + "\n";
-            String[] split = Builder.split(",");
-            String name = split[0];
-            String password = split[1];
-            int UID = Integer.parseInt(split[2]);
-            String groups = split[3];
-            Users temp = new Users(name, password, UID, groups);
-            users.add(temp);
+            Builder = names.get(i);
+            if(i+1 > names.size()){
+                writer.write(Builder);
+            } else {
+                writer.write(Builder + "\n");
+            }
         }
+        writer.close();
+        input.renameTo(backup);
+        writes.renameTo(input);
         JOptionPane.showInputDialog(Builder);
 
     }

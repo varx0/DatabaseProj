@@ -7,7 +7,7 @@ import java.util.*;
 public class main {
     static ArrayList<Users> users2 = new ArrayList<Users>();
 
-    public static void sortMenu(){
+    public static void sortMenu()throws IOException{
         String input = JOptionPane.showInputDialog("Sort Menu\n\n"
         + "A. Sort by Username\n"
         + "B. Sort by UID\n"
