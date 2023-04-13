@@ -14,6 +14,10 @@ public class main {
         + "C. Sort by Group\n");
         if(input.equals("A") || input.equals("a")){
             SortClass.sortUsername(users2);
+        } else if (input.equals("B") || input.equals("b")) {
+            SortClass.sortUID(users2);
+        } else if (input.equals("C") || input.equals("c")) {
+            SortClass.sortGroup(users2);
         }
     }
     public static void readList() throws Exception {
@@ -28,7 +32,6 @@ public class main {
                 break;
             }
             else{
-                //StringBuilder total = new StringBuilder();
                 String split[] = line.split(",");
                 String name = split[0];
                 String password = split[1];
@@ -37,9 +40,6 @@ public class main {
                 Users temp = new Users(name, password, UID, groups);
                 System.out.println(temp);
                 users2.add(temp);
-                /* total.append(name + ", " + password + ", " + UID + ", " + groups);
-                total.toString();
-                System.out.println(total); */
             }
 
         }
