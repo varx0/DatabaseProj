@@ -33,19 +33,36 @@ public class SortClass {
         JOptionPane.showInputDialog(Builder);
 
     }
-    public static void sortUID(ArrayList<Users> users){
+    //This function is the single most insane and convoluted thing I've ever created.
+    public static void sortUID(ArrayList<Users> users)throws IOException{
+        File output = new File("temp.txt");
+        File input = new File("list.txt");
+        File backup = new File("list.bak");
+        BufferedWriter writes = new BufferedWriter(new FileWriter(output));
+
         ArrayList<String> names = new ArrayList<>();
-        String Builder = "";
-        for(int i = 0; i<users.size(); i++) {
-            names.add(users.get(i).getUID() +"," + users.get(i).getUsername());
+        ArrayList<String> names2 = new ArrayList<>();
+        String Builder;
+        String Builder2;
+
+        String temp;
+        for(int i = 0; i < users.size(); i++){
+            Builder = users.get(i).getUID() +","+ users.get(i).getUsername() +","+ users.get(i).getPassword() +","+ users.get(i).getgroups();
+            names.add(Builder);
         }
         Collections.sort(names);
-        for(int i = 0; i <names.size(); i++){
-            String[] split = names.get(i).split(",");
-            Builder = Builder + "UID: " + split[0] +", " + "Username: " + split[1];
-            Builder = Builder + "\n";
+        for(int i = 0; i < names.size(); i++ ){
+            Builder2 = names.get(i).trim();
+            String[] split = Builder2.split(",");
+            temp = split[0];
+            split[0] = split[2];
+            split[2] = temp;
+            writes.write(split[1] +","+ split[0] +","+ split[2] +","+ split[3]+","+ "\n");
         }
-        JOptionPane.showInputDialog(Builder);
+        writes.close();
+        input.renameTo(backup);
+        output.renameTo(input);
+
     }
 
     public static void sortGroup(ArrayList<Users> users){
