@@ -41,7 +41,6 @@ public class SortClass {
         BufferedWriter writes = new BufferedWriter(new FileWriter(output));
 
         ArrayList<String> names = new ArrayList<>();
-        ArrayList<String> names2 = new ArrayList<>();
         String Builder;
         String Builder2;
 
@@ -57,7 +56,12 @@ public class SortClass {
             temp = split[0];
             split[0] = split[2];
             split[2] = temp;
-            writes.write(split[1] +","+ split[0] +","+ split[2] +","+ split[3]+","+ "\n");
+            if(i + 1 != names.size()){
+                writes.write(split[1] +","+ split[0] +","+ split[2] +","+ split[3]+ "\n");
+            }
+            else{
+                writes.write(split[1] +","+ split[0] +","+ split[2] +","+ split[3]);
+            }
         }
         writes.close();
         input.renameTo(backup);
@@ -65,15 +69,39 @@ public class SortClass {
 
     }
 
-    public static void sortGroup(ArrayList<Users> users){
-        ArrayList<Users> sorted = new ArrayList<>();
-        while(sorted.size() < users.size()){
-            for(int i =0; i < users.size(); i++){
-                if(users.get(i).getgroups() == "Admin"){
-                    users.get(i);
-                }
+    public static void sortGroup(ArrayList<Users> users)throws IOException{
+        File output = new File("temp.txt");
+        File input = new File("list.txt");
+        File backup = new File("list.bak");
+        BufferedWriter writes = new BufferedWriter(new FileWriter(output));
+        ArrayList<String> sorted = new ArrayList<>();
+
+        for(int i =0; i < users.size(); i++){
+            if(users.get(i).getgroups().equals("admin") || users.get(i).getgroups().equals("Admin")){
+                sorted.add(users.get(i).getAll());
             }
         }
+        for(int i = 0; i <users.size(); i++){
+            if(users.get(i).getgroups().equals("Mod") || users.get(i).getgroups().equals("mod")){
+                sorted.add(users.get(i).getAll());
+            }
+        }
+        for(int i = 0; i<users.size(); i++){
+            if(users.get(i).getgroups().equals("User") || users.get(i).getgroups().equals("user")){
+                sorted.add(users.get(i).getAll());
+            }
+        }
+
+        for(int i = 0; i < sorted.size(); i++) {
+            if (i + 1 != users.size()) {
+                writes.write(sorted.get(i) + "\n");
+            } else {
+                writes.write(sorted.get(i));
+            }
+        }
+        writes.close();
+        input.renameTo(backup);
+        output.renameTo(input);
     }
 
 
