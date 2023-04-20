@@ -1,5 +1,8 @@
 import javax.swing.*;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -30,41 +33,35 @@ public class SortClass {
         JOptionPane.showInputDialog(Builder);
 
     }
+    //This function is the single most insane and convoluted thing I've ever created.
     public static void sortUID(ArrayList<Users> users)throws IOException{
-        File input = new File("list.txt");
         File output = new File("temp.txt");
+        File input = new File("list.txt");
         File backup = new File("list.bak");
         BufferedWriter writes = new BufferedWriter(new FileWriter(output));
-        String currentLine;
 
-        int[] result = new int[users.size()];
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> names2 = new ArrayList<>();
+        String Builder;
+        String Builder2;
 
-        int temp;
-        int iterate;
-        for(int i = 0; i<users.size(); i++){
-            result[i] = users.get(i).getUID();
+        String temp;
+        for(int i = 0; i < users.size(); i++){
+            Builder = users.get(i).getUID() +","+ users.get(i).getUsername() +","+ users.get(i).getPassword() +","+ users.get(i).getgroups();
+            names.add(Builder);
         }
-
-        for(int i = 0; i < result.length; i++){
-            for(int y = 0; y < result.length-1; y++){
-                if(result[y+1] < result[y]){
-                    temp = result[y+1];
-                    result[y+1] = result[y];
-                    result[y] = temp;
-                }
-            }
+        Collections.sort(names);
+        for(int i = 0; i < names.size(); i++ ){
+            Builder2 = names.get(i).trim();
+            String[] split = Builder2.split(",");
+            temp = split[0];
+            split[0] = split[2];
+            split[2] = temp;
+            writes.write(split[1] +","+ split[0] +","+ split[2] +","+ split[3]+","+ "\n");
         }
-
-        for(int i = 0; i < result.length; i++){
-            BufferedReader reads2 = new BufferedReader(new FileReader(input));
-            currentLine = reads2.readLine();
-            String trimmed = currentLine.trim();
-            String[] split = trimmed.split(",");
-            if(result[i] == Integer.valueOf(split[3])){
-                writes.write(currentLine);
-            }
-
-        }
+        writes.close();
+        input.renameTo(backup);
+        output.renameTo(input);
 
     }
 
@@ -72,10 +69,8 @@ public class SortClass {
         ArrayList<Users> sorted = new ArrayList<>();
         while(sorted.size() < users.size()){
             for(int i =0; i < users.size(); i++){
-                for(int y = i+1; i < users.size(); y++){
-                    if(users.get(i).getUID() > users.get(i).getUID()){
-
-                    }
+                if(users.get(i).getgroups() == "Admin"){
+                    users.get(i);
                 }
             }
         }
