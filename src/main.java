@@ -1,5 +1,6 @@
 import com.sun.tools.javac.Main;
 
+import org.jfugue.player.Player;
 import javax.swing.*;
 import java.io.*;
 import java.util.*;
@@ -162,7 +163,10 @@ public class main {
         }
     }
     public static void main(String[] args)throws Exception{
+        Player player = new Player();
+        player.play("I[Piano] C5 E5 G5");
         readList();
         mainMenu();
+
     }
 }
