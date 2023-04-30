@@ -88,7 +88,7 @@ public class DisplayClass {
     public static void editUID(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++) {
-            builder = builder + "Username: " + users.get(i).getUID() + "UID: " + users.get(i).getUID() + "\n";
+            builder = builder + "Username: " + users.get(i).getUID() + " " + "UID: " + users.get(i).getUID() + "\n";
         }
 
         String oldUser = JOptionPane.showInputDialog(builder +"\n\nEnter the username of the ID you wish to change: ");
@@ -107,8 +107,8 @@ public class DisplayClass {
             while ((currentLine = reads.readLine()) != null){
                 String trimmed = currentLine.trim();
                 String[] split = trimmed.split(",");
-                String trimmedtwice = trimmed.replace(oldUser, newuser);
-                if (split[2].equals(oldUser)){
+                String trimmedtwice = trimmed.replace(split[2], newuser);
+                if (split[0].equals(oldUser)){
                     writes.write(trimmedtwice+"\n");
                 }else {
                     writes.write(trimmed + "\n");
@@ -128,7 +128,7 @@ public class DisplayClass {
     public static void editGroups(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++) {
-            builder = builder + users.get(i).getUsername() + "group: " + users.get(i).getgroups() + "\n";
+            builder = builder + "User: " + users.get(i).getUsername() +" "+ "group: " + users.get(i).getgroups() + "\n";
         }
 
         String oldUser = JOptionPane.showInputDialog(builder +"\n\nEnter the user whose group you wish to change: ");
@@ -146,8 +146,8 @@ public class DisplayClass {
             while ((currentLine = reads.readLine()) != null){
                 String trimmed = currentLine.trim();
                 String[] split = trimmed.split(",");
-                String trimmedtwice = trimmed.replace(oldUser, newuser);
-                if (split[3].equals(oldUser)) {
+                String trimmedtwice = trimmed.replace(split[3], newuser);
+                if (split[0].equals(oldUser)) {
                     writes.write(trimmedtwice+"\n");
                 } else {
                     writes.write(trimmed + "\n");
@@ -236,14 +236,5 @@ public class DisplayClass {
         }
         JOptionPane.showInputDialog(null, builder);
     }
-    public static void all(ArrayList<Users> users){
-        String builder = "";
-        for(int i = 0; i < users.size(); i++){
-            builder = builder + users.get(i).getUsername() + ",";
-            builder = builder + users.get(i).getPassword() + ",";
-            builder = builder + users.get(i).getUID() + ",";
-            builder = builder + users.get(i).getgroups() + "\n";
-        }
-        JOptionPane.showInputDialog(builder);
-    }
+
 }
