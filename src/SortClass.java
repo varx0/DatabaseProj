@@ -30,7 +30,7 @@ public class SortClass {
         writer.close();
         input.renameTo(backup);
         writes.renameTo(input);
-        JOptionPane.showInputDialog(Builder);
+
 
     }
     //This function is the single most insane and convoluted thing I've ever created.

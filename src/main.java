@@ -49,7 +49,7 @@ public class main {
     public static void ManipulateUser() throws Exception{
         String input = JOptionPane.showInputDialog("A. Add user "
         + "\nB. Remove user");
-        if(input.equals("A")) {
+        if(input.equals("A")||input.equals("a")) {
             String user = JOptionPane.showInputDialog("Enter the user now: "
             + "\n (format: Username,Password,UID,Groups)");
             Writer output;
@@ -63,11 +63,9 @@ public class main {
             } catch (Exception ArrayIndexOutOfBoundsException) {
                 JOptionPane.showInputDialog(null, "Please enter user with correct format.");
             }
-        } else if (input.equals("B")) {
+        } else if (input.equals("B") || input.equals("b")) {
             DisplayClass.Remove(users2);
 
-        } else if (input.equals("C")) {
-            DisplayClass.Remove(users2);
         }
     }
 
@@ -76,7 +74,7 @@ public class main {
         + "B. Display Passwords\n"
         + "C. Display UID\n"
         + "D. Display Groups\n");
-        if(choice.equals("A")){
+        if(choice.equals("A") || choice.equals("a")){
             DisplayClass.Names(users2);
         } else if (choice.equals("B") || choice.equals("b")) {
             DisplayClass.Passwords(users2);
@@ -163,8 +161,9 @@ public class main {
         }
     }
     public static void main(String[] args)throws Exception{
-        Player player = new Player();
-        player.play("I[Piano] C5 E5 G5");
+        //GraphicsRunner jinx = new GraphicsRunner();
+        music test = new music("thread");
+        test.start();
         readList();
         mainMenu();
 

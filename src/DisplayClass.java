@@ -47,15 +47,16 @@ public class DisplayClass {
     public static void editPass(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++) {
-            builder = builder + users.get(i).getPassword() + "\n";
+            builder = builder +"Username: " + users.get(i).getUsername() + " " + "Password: " + users.get(i).getPassword() + "\n";
+
         }
 
-        String oldUser = JOptionPane.showInputDialog(builder +"\n\nEnter the username you wish to change: ");
+        String oldUser = JOptionPane.showInputDialog(builder +"\n\nEnter the username you wish to change the password of: ");
         String newuser = JOptionPane.showInputDialog("What do you wish to change it to?");
         try {
             File inputFile = new File("list.txt");
             File tempFile = new File("temp.txt");
-            File backup = new File ("List.bak");
+            File backup = new File ("list.bak");
 
             tempFile.createNewFile();
 
@@ -66,9 +67,9 @@ public class DisplayClass {
             while ((currentLine = reads.readLine()) != null){
                 String trimmed = currentLine.trim();
                 String[] split = trimmed.split(",");
-                String trimmedtwice = trimmed.replace(oldUser, newuser);
-                if (split[1].equals(oldUser)){
-                    writes.write(trimmedtwice+"\n");
+
+                if (split[0].contains(oldUser)){
+                    writes.write(currentLine.replace(split[1], newuser) + "\n");
                 }else {
                     writes.write(trimmed + "\n");
                 }
@@ -87,15 +88,15 @@ public class DisplayClass {
     public static void editUID(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++) {
-            builder = builder + users.get(i).getUID() + "\n";
+            builder = builder + "Username: " + users.get(i).getUID() + "UID: " + users.get(i).getUID() + "\n";
         }
 
-        String oldUser = JOptionPane.showInputDialog(builder +"\n\nEnter the username you wish to change: ");
+        String oldUser = JOptionPane.showInputDialog(builder +"\n\nEnter the username of the ID you wish to change: ");
         String newuser = JOptionPane.showInputDialog("What do you wish to change it to?");
         try {
             File inputFile = new File("list.txt");
             File tempFile = new File("temp.txt");
-            File backup = new File ("List.bak");
+            File backup = new File ("list.bak");
 
             tempFile.createNewFile();
 
@@ -127,15 +128,15 @@ public class DisplayClass {
     public static void editGroups(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++) {
-            builder = builder + users.get(i).getgroups() + "\n";
+            builder = builder + users.get(i).getUsername() + "group: " + users.get(i).getgroups() + "\n";
         }
 
-        String oldUser = JOptionPane.showInputDialog(builder +"\n\nEnter the username you wish to change: ");
-        String newuser = JOptionPane.showInputDialog("What do you wish to change it to?");
+        String oldUser = JOptionPane.showInputDialog(builder +"\n\nEnter the user whose group you wish to change: ");
+        String newuser = JOptionPane.showInputDialog("What do you wish to change the group to?");
         try {
             File inputFile = new File("list.txt");
             File tempFile = new File("temp.txt");
-            File backup = new File ("List.bak");
+            File backup = new File ("list.bak");
             tempFile.createNewFile();
 
             BufferedReader reads = new BufferedReader(new FileReader(inputFile));
@@ -180,8 +181,8 @@ public class DisplayClass {
         String toRemove = JOptionPane.showInputDialog(builder + "\n" + "Enter the name of the user you wish to remove: ");
         try {
             File inputFile = new File("list.txt");
-            File tempFile = new File("Temp.txt");
-            File backup = new File ("List.bak");
+            File tempFile = new File("temp.txt");
+            File backup = new File ("list.bak");
             tempFile.createNewFile();
 
             BufferedReader reads = new BufferedReader(new FileReader(inputFile));
