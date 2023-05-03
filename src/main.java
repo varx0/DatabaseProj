@@ -161,11 +161,18 @@ public class main {
         }
     }
     public static void main(String[] args)throws Exception{
-        //GraphicsRunner jinx = new GraphicsRunner();
+        GraphicsRunner m = new GraphicsRunner();
+        JFrame f=new JFrame();
+        f.add(m);
+        f.setSize(400,400);
+        f.setVisible(true);
+        Thread.sleep(3000);
         music test = new music("thread");
         test.start();
         readList();
+        f.setVisible(false);
         mainMenu();
+
 
     }
 }
