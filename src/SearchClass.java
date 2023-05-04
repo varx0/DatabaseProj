@@ -1,13 +1,12 @@
-import javax.imageio.IIOException;
 import javax.swing.*;
-import java.io.*;
-import java.lang.reflect.Array;
-import java.nio.Buffer;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 public class SearchClass {
-
+    /**
+     * Searches the database for a matching username, and displays all data related to that user.
+     * @param users Arraylist of users to be defined when the method is called.
+     */
     public static void searchName(ArrayList<Users> users) {
         String searched = JOptionPane.showInputDialog("Enter Query: ");
         String builder = "";
@@ -28,6 +27,11 @@ public class SearchClass {
         }
     }
 
+    /**
+     * Creates and returns a list of usernames that are apart of the given group.
+     * @param users Arraylist of users to be defined when the method is called.
+     * @return Returns a list of usernames with the given group.
+     */
     public static ArrayList<String> searchGroups(ArrayList<Users> users){
         String searched = JOptionPane.showInputDialog("Enter Query: ");
         searched = searched.toLowerCase();
@@ -49,6 +53,10 @@ public class SearchClass {
         return list;
     }
 
+    /**
+     * Returns all information relevant to a user with the searched UID.
+     * @param users Arraylist of users to be defined when the method is called.
+     */
     public static void searchUID(ArrayList<Users> users){
         String searched = JOptionPane.showInputDialog("Enter Query: ");
 

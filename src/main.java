@@ -8,19 +8,35 @@ import java.util.*;
 public class main {
     static ArrayList<Users> users2 = new ArrayList<Users>();
 
+    /**
+     * Menu that is used when the sort option is chosen in the main menu.
+     * @throws IOException Throws this when an error occurs.
+     */
     public static void sortMenu()throws IOException{
         String input = JOptionPane.showInputDialog("Sort Menu\n\n"
         + "A. Sort by Username\n"
         + "B. Sort by UID\n"
-        + "C. Sort by Group\n");
+        + "C. Sort by Group\n"
+        + "X. Exit to main menu\n");
         if(input.equals("A") || input.equals("a")){
             SortClass.sortUsername(users2);
         } else if (input.equals("B") || input.equals("b")) {
             SortClass.sortUID(users2);
         } else if (input.equals("C") || input.equals("c")) {
             SortClass.sortGroup(users2);
+        } else if (input.equals("x") || input.equals("X")) {
+            try{
+                mainMenu();
+            }catch (Exception ex){
+                System.out.println("Error");
+            }
         }
     }
+
+    /**
+     * Reads each line in list database, creates a user based on each line. It's very sensitive.
+     * @throws Exception Throws this when error occurs.
+     */
     public static void readList() throws Exception {
 
 
@@ -46,9 +62,14 @@ public class main {
         }
     }
 
+    /**
+     * The menu that appears when the manipulate user option is choses
+     * @throws Exception Throws this when an error occurs.
+     */
     public static void ManipulateUser() throws Exception{
         String input = JOptionPane.showInputDialog("A. Add user "
-        + "\nB. Remove user");
+        + "\nB. Remove user\n"
+        + "X. Exit to main menu\n");
         if(input.equals("A")||input.equals("a")) {
             String user = JOptionPane.showInputDialog("Enter the user now: "
             + "\n (format: Username,Password,UID,Groups)");
@@ -66,14 +87,24 @@ public class main {
         } else if (input.equals("B") || input.equals("b")) {
             DisplayClass.Remove(users2);
 
+        }else if (input.equals("x") || input.equals("X")) {
+            try{
+                mainMenu();
+            }catch (Exception ex){
+                System.out.println("Error");
+            }
         }
     }
 
+    /**
+     * Menu that appears when the display menu option is selected.
+     */
     public static void  displayMenu(){
         String choice = JOptionPane.showInputDialog("A. Display Names\n"
         + "B. Display Passwords\n"
         + "C. Display UID\n"
-        + "D. Display Groups\n");
+        + "D. Display Groups\n"
+        + "X. Exit to main menu\n");
         if(choice.equals("A") || choice.equals("a")){
             DisplayClass.Names(users2);
         } else if (choice.equals("B") || choice.equals("b")) {
@@ -82,14 +113,24 @@ public class main {
             DisplayClass.UID(users2);
         } else if (choice.equals("D") || choice.equals("d")) {
             DisplayClass.Groups(users2);
+        } else if (choice.equals("x") || choice.equals("X")) {
+            try{
+                mainMenu();
+            }catch (Exception ex){
+                System.out.println("Error");
+            }
         }
     }
 
+    /**
+     * Menu that appears when the edit menu option is selected.
+     */
     public static void editMenu(){
         String choice = JOptionPane.showInputDialog("A. Change Username\n"
         + "B. Change Password\n"
         + "C. Change UID\n"
-        + "D. Change Groups");
+        + "D. Change Groups\n"
+        + "X. Exit to main menu\n");
         if(choice.equals("a") || choice.equals("A")) {
             DisplayClass.editName(users2);
         } else if (choice.equals("b") || choice.equals("B")) {
@@ -98,15 +139,25 @@ public class main {
             DisplayClass.editUID(users2);
         } else if (choice.equals("d") || choice.equals("D")) {
             DisplayClass.editGroups(users2);
+        } else if (choice.equals("x") || choice.equals("X")) {
+            try{
+                mainMenu();
+            }catch (Exception ex){
+                System.out.println("Error");
+            }
         }
 
     }
 
+    /**
+     * menu that appears when the search menu option is selected.
+     */
     public static void searchMenu() {
         String searches = ("Search menu\n"
         + "A. Search Name\n"
         + "B. Search groups\n"
-        + "C. Search UID\n");
+        + "C. Search UID\n"
+        + "X. Back to main menu\n");
         String res = JOptionPane.showInputDialog(searches);
         if(res.equals("A") || res.equals("a")) {
             SearchClass.searchName(users2);
@@ -123,8 +174,19 @@ public class main {
             }
         } else if (res.equals("C") || res.equals("c")) {
             SearchClass.searchUID(users2);
+        } else if (res.equals("x") || res.equals("X")) {
+            try{
+                mainMenu();
+            }catch (Exception ex){
+                System.out.println("Error");
+            }
         }
     }
+
+    /**
+     * Main menu
+     * @throws Exception Throws this when an error occurs.
+     */
     public static void mainMenu() throws Exception {
         String MainMenu = ("Main menu\n" +
                 "A. Manipulate Users \n"
@@ -160,6 +222,12 @@ public class main {
             System.exit(0);
         }
     }
+
+    /**
+     * Initializes everything, the graphical intro most notably, defines the music thread, reads all data from list, and opens the main menu.
+     * @param args Not used.
+     * @throws Exception Throws this when an error occurs.
+     */
     public static void main(String[] args)throws Exception{
         GraphicsRunner m = new GraphicsRunner();
         JFrame f=new JFrame();

@@ -3,7 +3,10 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class DisplayClass {
-    String total = "";
+    /**
+     * When the method is called, the given username will be edited to become second input.
+     * @param users ArrayList of users to be defined when the method is called.
+     */
     public static void editName(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++) {
@@ -44,6 +47,11 @@ public class DisplayClass {
         }
 
     }
+
+    /**
+     * When the method is called, the given username's password will be edited to become the second given input.
+     * @param users ArrayList of users to be defined when the method is called
+     */
     public static void editPass(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++) {
@@ -85,6 +93,11 @@ public class DisplayClass {
         }
 
     }
+
+    /**
+     * When the method is called, the given Username's UID is edited to become the second given input.
+     * @param users ArrayList of users to be defined when the method is called.
+     */
     public static void editUID(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++) {
@@ -125,6 +138,11 @@ public class DisplayClass {
         }
 
     }
+
+    /**
+     * When the method is called, the given username's groups are edited to become the second given input.
+     * @param users Arraylist of users to be defined when the method is called.
+     */
     public static void editGroups(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++) {
@@ -173,6 +191,11 @@ public class DisplayClass {
         JOptionPane.showInputDialog(builder);
 
     }
+
+    /**
+     * When the method is called, deletes the user entry of a given username completely.
+     * @param users Arraylist of users to be defined when the method is called.
+     */
     public static void Remove(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++){
@@ -208,7 +231,10 @@ public class DisplayClass {
 
     }
 
-
+    /**
+     * Displays the Username of the user, and their correlated UID.
+     * @param users Arraylist of users to be defined when the method is called.
+     */
     public static void UID(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++){
@@ -218,6 +244,11 @@ public class DisplayClass {
         }
         JOptionPane.showInputDialog(null, builder);
     }
+
+    /**
+     * Displays the username and correlated groups of the user.
+     * @param users Arraylist of users to be defined when the method is called.
+     */
     public static void Groups(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++){
@@ -227,6 +258,11 @@ public class DisplayClass {
         }
         JOptionPane.showInputDialog(null, builder);
     }
+
+    /**
+     * Displays the Username and correlated password of given user.
+     * @param users Arraylist of users to be defined when the method is called.
+     */
     public static void Passwords(ArrayList<Users> users){
         String builder = "";
         for(int i = 0; i < users.size(); i++){

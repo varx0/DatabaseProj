@@ -4,7 +4,10 @@ import javax.swing.JFrame;
 public class GraphicsRunner extends Canvas
 {
 
-
+    /**
+     * Creates the intro graphic
+     * @param g   The graphics object
+     */
     public void paint(Graphics g) {
 
         setBackground(Color.lightGray);

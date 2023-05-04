@@ -5,11 +5,19 @@ public class music implements Runnable{
     String threadName;
     Thread t;
 
+    /**
+     * names a thread
+     * @param name Accepts a string as a name for the thread, to be defined in main
+     */
     music(String name){
         threadName = name;
         System.out.println("Creating " + threadName);
     }
 
+    /**
+     * Creates a thread, outputs to console that the thread is running
+     * It also runs music in the thread to occur only once before the thread is exited.
+     */
     public void run(){
         System.out.println("Runnning " + threadName);
         try {
@@ -24,6 +32,9 @@ public class music implements Runnable{
         System.out.println("exiting thread: " +threadName);
     }
 
+    /**
+     * Starts the thread, actually defines it here aswell.
+     */
     public void start(){
         System.out.println("Sarting " + threadName);
         if(t == null){

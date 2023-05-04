@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class SortClass {
+    /**
+     * Sorts the given users parameter alphabetically by username
+     * @param users ArrayList of users defined when the method is called
+     * @throws IOException In the event of an errow, throws this
+     */
     public static void sortUsername(ArrayList<Users> users)throws IOException {
         File writes = new File("temp.txt");
         File input = new File("list.txt");
@@ -34,6 +39,12 @@ public class SortClass {
 
     }
     //This function is the single most insane and convoluted thing I've ever created.
+
+    /**
+     * Sorts given users parameter numerically by UID
+     * @param users Arraylist of users defined when the method is called.
+     * @throws IOException In the event of an error, throws this.
+     */
     public static void sortUID(ArrayList<Users> users)throws IOException{
         File output = new File("temp.txt");
         File input = new File("list.txt");
@@ -69,6 +80,11 @@ public class SortClass {
 
     }
 
+    /**
+     * Sorts given users parameter by group, does this in a hierarchical manor defined as follows from most power to least: Admin, Mod, User.
+     * @param users ArrayList of users defined when the method is called.
+     * @throws IOException In the event of an error, throws this.
+     */
     public static void sortGroup(ArrayList<Users> users)throws IOException{
         File output = new File("temp.txt");
         File input = new File("list.txt");
