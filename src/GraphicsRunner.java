@@ -7,10 +7,14 @@ public class GraphicsRunner extends Canvas
 
     public void paint(Graphics g) {
 
-        setBackground(Color.WHITE);
-        g.fillRect(10, 10, 80, 30);
-        g.drawString("Database", 25, 25);
-        setForeground(Color.RED);
+        setBackground(Color.lightGray);
+        g.setColor(new Color(173,216,230));
+        g.fillOval(0, 150, 389, 80);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+        g.drawString("Database360TM", 140, 195);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 10));
+        g.drawString("Your solution to no problem", 140, 205);
 
     }
 }
